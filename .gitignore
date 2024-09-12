@@ -16,3 +16,4 @@ ios.xcworkspace/
 
 .DS_Store
 .externalNativeBuild
+.kotlin/
