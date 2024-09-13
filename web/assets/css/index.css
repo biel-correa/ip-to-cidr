@@ -1,0 +1,8 @@
+main {
+  margin: 7em 0;
+}
+
+main .form-container:not(.placeholder) {
+  margin: 0 auto;
+  max-width: 500px;
+}

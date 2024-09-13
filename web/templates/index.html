@@ -1,5 +1,29 @@
-<html>
-	<h1>
-		{{ .title }}
-	</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>IP to CIDR</title>
+	<link rel="stylesheet" href="assets/css/index.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+</head>
+
+<body>
+	<main class="has-text-centered">
+		<form action="/">
+			<h1 class="title is-1">Type in the IP</h1>
+			<div class="columns form-container">
+				<div class="column is-four-fifths">
+					<input class="input is-medium" type="text" name="ip" placeholder="IPv4 or IPv6" />
+				</div>
+				<div class="column">
+					<button class="button is-primary is-medium is-fullwidth">Convert</button>
+				</div>
+			</div>
+			<button>Or use your IP</button>
+		</form>
+	</main>
+</body>
+
 </html>
