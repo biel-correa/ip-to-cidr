@@ -7,7 +7,8 @@ import (
 )
 
 func IndexHandler(c *gin.Context) {
+	var requestIp = c.ClientIP()
 	c.HTML(http.StatusOK, "index.html", gin.H{
-		"title": "Main website",
+		"ip": requestIp,
 	})
 }

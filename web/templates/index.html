@@ -21,9 +21,13 @@
 					<button class="button is-primary is-medium is-fullwidth">Convert</button>
 				</div>
 			</div>
-			<button>Or use your IP</button>
+			<button type="button">Or use your IP</button>
 		</form>
 	</main>
+
+	<script>
+		const clientIp = "{{ .ip }}"
+	</script>
 </body>
 
 </html>
