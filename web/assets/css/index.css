@@ -1,8 +1,12 @@
 header {
-  margin: 7em 0;
+  margin: 7em 0 4em 0;
 }
 
 header .form-container:not(.placeholder) {
   margin: 0 auto;
   max-width: 500px;
+}
+
+main:not(.placeholder) {
+  margin: 4em auto;
 }
