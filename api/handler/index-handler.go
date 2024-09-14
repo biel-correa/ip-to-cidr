@@ -19,30 +19,11 @@ func IndexHandler(c *gin.Context) {
 		return
 	}
 
-	parsedIp := net.ParseIP(ip)
-	if parsedIp == nil {
+	cidr, error := convertToCidr64(ip)
+	if error != "" {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"ip":    requestIp,
-			"error": "Invalid IP address",
-		})
-		return
-	}
-
-	if parsedIp.To4() != nil {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"ip":    requestIp,
-			"error": "IPv4 is not supported",
-		})
-		return
-	}
-
-	cidrFormat := fmt.Sprintf("%s/64", ip)
-	_, cidr, _ := net.ParseCIDR(cidrFormat)
-
-	if cidr == nil {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"ip":    requestIp,
-			"error": "Could not parse to CIDR/64",
+			"error": error,
 		})
 		return
 	}
@@ -51,4 +32,24 @@ func IndexHandler(c *gin.Context) {
 		"ip":   requestIp,
 		"cidr": cidr,
 	})
+}
+
+func convertToCidr64(ip string) (*net.IPNet, string) {
+	parsedIp := net.ParseIP(ip)
+	if parsedIp == nil {
+		return nil, "Invalid IP address"
+	}
+
+	if parsedIp.To4() != nil {
+		return nil, "IPv4 is not supported"
+	}
+
+	cidrFormat := fmt.Sprintf("%s/64", ip)
+	_, cidr, _ := net.ParseCIDR(cidrFormat)
+
+	if cidr == nil {
+		return nil, "Could not parse to CIDR/64"
+	}
+
+	return cidr, ""
 }
