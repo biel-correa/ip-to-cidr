@@ -28,6 +28,14 @@ func IndexHandler(c *gin.Context) {
 		return
 	}
 
+	if parsedIp.To4() != nil {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"ip":    requestIp,
+			"error": "IPv4 is not supported",
+		})
+		return
+	}
+
 	cidrFormat := fmt.Sprintf("%s/64", ip)
 	_, cidr, _ := net.ParseCIDR(cidrFormat)
 
