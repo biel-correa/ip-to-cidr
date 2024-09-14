@@ -8,5 +8,6 @@ header .form-container:not(.placeholder) {
 }
 
 main:not(.placeholder) {
+  padding: 0 var(--bulma-column-gap);
   margin: 4em auto;
 }
