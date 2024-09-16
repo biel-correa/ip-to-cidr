@@ -1,7 +1,7 @@
 const lastSubnetMask = () => {
   const urlParams = new URLSearchParams(window.location.search)
   const subnetMask = urlParams.get('subnetMask')
-  return subnetMask <= 128 ? subnetMask : 32
+  return subnetMask != null && subnetMask <= 128 ? subnetMask : 32
 }
 
 const createSubnetMaskOptions = () => {
