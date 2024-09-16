@@ -8,7 +8,7 @@ header {
 
 header .form-container:not(.placeholder) {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 main:not(.placeholder) {

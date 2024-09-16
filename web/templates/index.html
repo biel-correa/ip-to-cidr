@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="A simple tool that converts IPv6 to CIDR/64">
+	<meta name="description" content="A simple tool that converts IPv6 to CIDR">
 	<title>IP to CIDR</title>
 	<link rel="stylesheet" href="assets/css/index.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
@@ -16,14 +16,23 @@
 	<header class="has-text-centered">
 		<form action="/">
 			<h1 class="title is-1">Type in the IP</h1>
-			<div class="columns form-container">
-				<div class="column is-four-fifths">
-					<input class="input is-medium" type="text" name="ip" id="idInput" placeholder="IPv6" />
+
+			<div class="field has-addons form-container">
+				<div class="control is-expanded">
+					<input class="input is-medium" type="text" name="ip" id="idInput" placeholder="IPv4 or IPv6" />
 				</div>
-				<div class="column">
+
+				<div class="control">
+					<div class="select is-medium">
+						<select name="subnetMask" id="subnetMask"></select>
+					</div>
+				</div>
+
+				<div class="control">
 					<button id="submit" class="button is-primary is-medium is-fullwidth">Convert</button>
 				</div>
 			</div>
+
 			<button id="useYourIp" type="button">Or use your IP</button>
 		</form>
 	</header>
@@ -57,7 +66,27 @@
 	<script>
 		const clientIp = "{{ .ip }}"
 
+		const lastSubnetMask = () => {
+			const urlParams = new URLSearchParams(window.location.search)
+			const subnetMask = urlParams.get('subnetMask')
+			return subnetMask <= 128 ? subnetMask : 32
+		}
+
+		const createSubnetMaskOptions = () => {
+			const subnetMask = $('#subnetMask')
+			for (let i = 0; i <= 128; i++) {
+				subnetMask.append($('<option>', {
+					value: i,
+					text: `/${i}`
+				}))
+			}
+
+			subnetMask.val(lastSubnetMask())
+		}
+
 		$(document).ready(() => {
+			createSubnetMaskOptions()
+
 			$('#useYourIp').click(() => {
 				$(idInput).val(clientIp)
 				$('#submit').click()
