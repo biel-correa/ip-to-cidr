@@ -8,8 +8,6 @@
 	<title>IP to CIDR</title>
 	<link rel="stylesheet" href="assets/css/index.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/regular.min.css">
 </head>
 
 <body>
@@ -43,7 +41,7 @@
 		<div class="notification is-primary">
 			{{ .cidr }}
 			<span id="copyResult" class="icon cursor-pointer">
-				<i class="fa-solid fa-copy"></i>
+				<img class="copy-icon" src="/assets/icons/copy.svg" alt="">
 			</span>
 		</div>
 		{{ end }}

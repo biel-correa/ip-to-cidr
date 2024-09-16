@@ -15,3 +15,7 @@ main:not(.placeholder) {
   padding: 0 var(--bulma-column-gap);
   margin: 4em auto;
 }
+
+main .notification.is-primary .copy-icon {
+  width: 0.8em;
+}
