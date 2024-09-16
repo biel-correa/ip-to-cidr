@@ -1,3 +1,7 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
 header {
   margin: 7em 0 4em 0;
 }
