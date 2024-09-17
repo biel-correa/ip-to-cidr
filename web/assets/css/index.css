@@ -19,3 +19,9 @@ main:not(.placeholder) {
 main .notification.is-primary .copy-icon {
   width: 0.8em;
 }
+
+@media screen and (max-width: 620px) {
+  header .form-container {
+    padding: 0 var(--bulma-column-gap);
+  }
+}
