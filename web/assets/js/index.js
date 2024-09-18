@@ -25,6 +25,6 @@ $(document).ready(() => {
   })
 
   $('#copyResult').click(() => {
-    navigator.clipboard.writeText("{{ .cidr }}")
+    navigator.clipboard.writeText(cidr)
   })
 })
